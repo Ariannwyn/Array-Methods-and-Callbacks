@@ -4,22 +4,58 @@ console.log(fifaData);
 console.log('its working');
 // ⚽️ M  V P ⚽️ //
 
-/* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
+// Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
 
-(a) Home Team name for 2014 world cup final
-(b) Away Team name for 2014 world cup final
-(c) Home Team goals for 2014 world cup final
-(d) Away Team goals for 2014 world cup final
-(e) Winner of 2014 world cup final */
+// (a) Home Team name for 2014 world cup final
+
+let homeName = fifaData.filter((home)=>{
+    return home.Year == "2014" && home.Stage=="Final";
+});
+console.log(homeName[0]["Home Team Name"])
+
+// (b) Away Team name for 2014 world cup final
+
+let awayName = fifaData.filter((away)=>{
+    return away.Year == "2014" && away.Stage=="Final";
+});
+console.log(awayName[0]["Away Team Name"])
+
+// (c) Home Team goals for 2014 world cup final
+
+let homeGoals = fifaData.filter((home)=>{
+    return home.Year == "2014" && home.Stage=="Final";
+});
+console.log(homeGoals[0]["Home Team Goals"])
+
+// (d) Away Team goals for 2014 world cup final
+
+let awayGoals = fifaData.filter((away)=>{
+    return away.Year == "2014" && away.Stage=="Final";
+});
+console.log(awayGoals[0]["Away Team Goals"])
+
+// (e) Winner of 2014 world cup final 
+
+if (homeGoals[0]["Home Team Goals"] >= awayGoals[0]["Away Team Goals"]){
+    console.log(homeName[0]["Home Team Name"])
+}
+else if (homeGoals[0]["Home Team Goals"] >= awayGoals[0]["Away Team Goals"]){
+    console.log(awayName[0]["Away Team Name"])
+}
+else { console.log("Tie")}
 
 
-/* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
+/* Task 2: Create a function called getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+function getFinals(fifaData) {
+    let arrayFinals = fifaData.filter((Stage)=>{
+        return Stage.Stage === "Final";
+    })
+    return arrayFinals;
+}
+getFinals(fifaData)
+console.log(getFinals(fifaData))
 
-    /* code here */
-
-};
 
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
@@ -49,7 +85,7 @@ Parameters:
  */
 
 function getWinnersByYear(/* code here */) {
-
+    // `In ${year}, ${country} won the world cup!`
 };
 
 getWinnersByYear();
